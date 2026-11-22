@@ -315,8 +315,8 @@
     /* PHOTO GALLERY */
     .gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-      gap: 22px;
+      grid-template-columns: repeat(auto-fill, minmax(460px, 1fr));
+      gap: 24px;
     }
     .photo {
       position: relative;
@@ -615,7 +615,7 @@
       .hero-card img { height: 480px; }
       .board-wrap { grid-template-columns: 1fr; }
       .composer { position: static; }
-      .gallery { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+      .gallery { grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 18px; }
     }
     @media (max-width: 720px) {
       .container { width: min(1180px, calc(100% - 32px)); }
@@ -642,8 +642,8 @@
       .btn { width: 100%; }
       .hero-actions { flex-direction: column; }
       .hero-card img { height: 300px; }
-      .gallery { grid-template-columns: 1fr 1fr; gap: 10px; }
-      .photo { border-radius: 14px; }
+      .gallery { grid-template-columns: 1fr; gap: 14px; }
+      .photo { border-radius: 16px; aspect-ratio: 4 / 4.5; }
       .composer { padding: 22px; }
     }
     @media (prefers-reduced-motion: reduce) {
@@ -863,7 +863,7 @@
 
     // ---------- Sticker Board ----------
     (function initBoard() {
-      const STORAGE_KEY = 'slava-birthday-wishes-v2';
+      const STORAGE_KEY = 'slava-birthday-wishes-v3';
       const form = document.getElementById('wish-form');
       const nameInput = document.getElementById('wish-name');
       const textInput = document.getElementById('wish-text');
@@ -878,7 +878,11 @@
         { id: uid(), name: 'Команда', text: 'Пусть подача всегда будет точной, а пиво после игры — холодным! 🍺', color: '#CDEBFF', x: null, y: null, rot: 1.2 },
         { id: uid(), name: 'Болельщики', text: 'Здоровья, счастья, драйва и новых крутых моментов на поле и на пляже!', color: '#D6F5D6', x: null, y: null, rot: -0.6 },
         { id: uid(), name: 'Настя', text: 'Слава, с днем рождения тебя! Самый позитивный микстер и добрейший человек, который при этом способен не хило потроллить всяких токсиков, обладающий выдающимся чувством юмора и недюжинными спортивными способностями, бегающий одинаково быстро и на песке, и на траве, с пеленок не бьющий по аутам, надежный семьянин и друг, в общем прекрасный во всех отношениях мужчина! Пусть жизнь тебя награждает так, как ты заслуживаешь! Пусть колени будут как новенькие, организм вынослив к спорту и к тусовкам, круг друзей широк , кошелек полон, гармония в семье постоянна!', color: '#FFD3C2', x: null, y: null, rot: 0.8 },
-        { id: uid(), name: 'Алексей', text: 'Славян, с Днем Рождения. Меньше тревог и проблем в этом турбулентном мире. Будь счастлив и здоров!', color: '#E7D7FF', x: null, y: null, rot: -1.1 }
+        { id: uid(), name: 'Алексей', text: 'Славян, с Днем Рождения. Меньше тревог и проблем в этом турбулентном мире. Будь счастлив и здоров!', color: '#E7D7FF', x: null, y: null, rot: -1.1 },
+        { id: uid(), name: 'Валера', text: 'Слава, поздравляю с Днём Рождения! Желаю здоровья, семейного счастья и успехов в спорте! С праздником!', color: '#FFF3A6', x: null, y: null, rot: 1.3 },
+        { id: uid(), name: 'Марина', text: 'Слава, с Днём Рождения 🥳\nУспешных проектов!\nРадостных событий!\nЛюбящих и любимых домочадцев!\nПоздравляю 🙌', color: '#CDEBFF', x: null, y: null, rot: -0.9 },
+        { id: uid(), name: 'Оля', text: 'Слава, с Днём рождения! Здоровья, счастья, успехов, спортивных побед!🥇🎁🎉', color: '#D6F5D6', x: null, y: null, rot: 0.7 },
+        { id: uid(), name: 'Аня', text: 'Слава, с днем рождения! Будь здоров, сыт и весел!', color: '#FFD3C2', x: null, y: null, rot: -1.2 }
       ];
 
       function uid() { return 'w_' + Math.random().toString(36).slice(2, 10) + Date.now().toString(36); }
