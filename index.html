@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Слава, с днём рождения!</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --sand: #FFF6E8;
+      --sand-deep: #F5E1C3;
+      --ocean: #0E7C86;
+      --ocean-dark: #095C63;
+      --sunset: #FF6B35;
+      --sun: #FFB347;
+      --beer: #F4A261;
+      --beer-foam: #FFF8EE;
+      --grass: #4CAF7D;
+      --ink: #1F2933;
+      --muted: #5F6C76;
+      --card: rgba(255,255,255,0.82);
+      --shadow: 0 20px 60px rgba(31,41,51,0.12);
+      --radius: 24px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      color: var(--ink);
+      background: var(--sand);
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; }
+    button { font: inherit; }
+
+    .bg-shapes {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .bg-shapes span {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(1px);
+      opacity: 0.45;
+    }
+    .bg-shapes .s1 { width: 420px; height: 420px; background: #FFE0B8; top: -120px; right: -80px; }
+    .bg-shapes .s2 { width: 340px; height: 340px; background: #C9F0E8; bottom: 10%; left: -100px; }
+    .bg-shapes .s3 { width: 260px; height: 260px; background: #FFD6C2; top: 45%; right: 8%; opacity: 0.3; }
+
+    .container {
+      width: min(1180px, calc(100% - 48px));
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 48px 0 72px;
+      position: relative;
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 56px;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 18px;
+      background: rgba(255,255,255,0.7);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.9);
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.03em;
+      color: var(--ocean-dark);
+      box-shadow: 0 4px 20px rgba(14,124,134,0.08);
+    }
+    .badge-dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--sunset), var(--sun));
+      box-shadow: 0 0 0 4px rgba(255,107,53,0.15);
+    }
+    .nav-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--ink);
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 10px 16px;
+      border-radius: 999px;
+      transition: .25s ease;
+    }
+    .nav-links a:hover { background: rgba(255,255,255,0.75); color: var(--ocean-dark); }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ocean);
+      margin-bottom: 20px;
+    }
+    .eyebrow::before {
+      content: '';
+      width: 32px; height: 2px;
+      background: linear-gradient(90deg, var(--sunset), var(--sun));
+      border-radius: 2px;
+    }
+    h1 {
+      margin: 0 0 24px;
+      font-size: clamp(2.8rem, 7vw, 5.6rem);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      font-weight: 900;
+    }
+    h1 .name {
+      display: block;
+      background: linear-gradient(135deg, var(--ocean-dark) 0%, var(--ocean) 45%, var(--sunset) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    h1 .sub {
+      display: block;
+      font-size: 0.52em;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-top: 8px;
+    }
+    .hero p {
+      font-size: 1.1rem;
+      line-height: 1.75;
+      color: var(--muted);
+      max-width: 58ch;
+      margin: 0 0 32px;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 16px 28px;
+      border-radius: 14px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn:active { transform: translateY(0); }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--sunset), #FF824D);
+      color: #fff;
+      box-shadow: 0 12px 30px rgba(255,107,53,0.35);
+    }
+    .btn-primary:hover { box-shadow: 0 16px 36px rgba(255,107,53,0.45); }
+    .btn-secondary {
+      background: rgba(255,255,255,0.75);
+      color: var(--ink);
+      border: 1px solid rgba(31,41,51,0.08);
+      backdrop-filter: blur(8px);
+    }
+    .btn-secondary:hover { background: #fff; }
+
+    .interest-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(255,255,255,0.9);
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #33424D;
+      box-shadow: 0 2px 10px rgba(31,41,51,0.04);
+    }
+    .tag .icon { font-size: 1.15rem; line-height: 1; }
+
+    .hero-visual {
+      position: relative;
+      padding: 24px;
+    }
+    .hero-card {
+      position: relative;
+      background: linear-gradient(160deg, #fff 0%, #FFF9F1 100%);
+      padding: 16px;
+      border-radius: 36px;
+      box-shadow: var(--shadow);
+      transform: rotate(1.5deg);
+    }
+    .hero-card img {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+      border-radius: 24px;
+    }
+    .floating-note {
+      position: absolute;
+      background: #fff;
+      padding: 14px 20px;
+      border-radius: 16px;
+      box-shadow: 0 12px 30px rgba(31,41,51,0.12);
+      font-weight: 700;
+      font-size: 0.95rem;
+      white-space: nowrap;
+      z-index: 2;
+    }
+    .floating-note.beer {
+      bottom: 32px;
+      left: -8px;
+      transform: rotate(-6deg);
+      background: #FFF4DC;
+      color: #8A5A00;
+    }
+    .floating-note.sport {
+      top: 12px;
+      right: 0;
+      transform: rotate(5deg);
+      background: #E8F7F5;
+      color: var(--ocean-dark);
+    }
+    .floating-note.bday {
+      top: 50%;
+      right: -18px;
+      transform: rotate(-3deg) translateY(-50%);
+      background: linear-gradient(135deg, var(--sunset), var(--sun));
+      color: #fff;
+      font-size: 0.85rem;
+      padding: 12px 16px;
+    }
+
+    /* SECTION GENERIC */
+    section { padding: 40px 0 88px; position: relative; z-index: 1; }
+    .section-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 36px;
+      flex-wrap: wrap;
+    }
+    .section-head h2 {
+      margin: 0 0 12px;
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      font-weight: 800;
+    }
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.02rem;
+      line-height: 1.7;
+      max-width: 62ch;
+    }
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ocean);
+      margin-bottom: 14px;
+    }
+    .section-label::before {
+      content: '';
+      width: 24px; height: 2px;
+      background: var(--sunset);
+      border-radius: 2px;
+    }
+
+    /* PHOTO GALLERY */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-auto-rows: 86px;
+      gap: 18px;
+    }
+    .photo {
+      position: relative;
+      overflow: hidden;
+      border-radius: 22px;
+      box-shadow: 0 10px 30px rgba(31,41,51,0.1);
+      background: #ddd;
+      cursor: pointer;
+    }
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .55s ease;
+    }
+    .photo:hover img { transform: scale(1.04); }
+    .photo::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(31,41,51,0.18), transparent 45%);
+      opacity: 0;
+      transition: opacity .3s ease;
+    }
+    .photo:hover::after { opacity: 1; }
+
+    .photo:nth-child(1)  { grid-column: span 5; grid-row: span 5; }
+    .photo:nth-child(2)  { grid-column: span 4; grid-row: span 3; }
+    .photo:nth-child(3)  { grid-column: span 3; grid-row: span 3; }
+    .photo:nth-child(4)  { grid-column: span 3; grid-row: span 4; }
+    .photo:nth-child(5)  { grid-column: span 4; grid-row: span 4; }
+    .photo:nth-child(6)  { grid-column: span 5; grid-row: span 2; }
+    .photo:nth-child(7)  { grid-column: span 3; grid-row: span 3; }
+    .photo:nth-child(8)  { grid-column: span 3; grid-row: span 3; }
+    .photo:nth-child(9)  { grid-column: span 3; grid-row: span 3; }
+    .photo:nth-child(10) { grid-column: span 3; grid-row: span 3; }
+    .photo:nth-child(11) { grid-column: span 4; grid-row: span 3; }
+    .photo:nth-child(12) { grid-column: span 4; grid-row: span 3; }
+    .photo:nth-child(13) { grid-column: span 4; grid-row: span 3; }
+    .photo:nth-child(14) { grid-column: span 3; grid-row: span 3; }
+    .photo:nth-child(15) { grid-column: span 3; grid-row: span 3; }
+    .photo:nth-child(16) { grid-column: span 3; grid-row: span 3; }
+    .photo:nth-child(17) { grid-column: span 3; grid-row: span 3; }
+    .photo:nth-child(18) { grid-column: span 6; grid-row: span 3; }
+
+    /* WISHES / STICKER BOARD */
+    .wishes-section {
+      padding-bottom: 100px;
+    }
+    .board-wrap {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+    .composer {
+      background: rgba(255,255,255,0.78);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.95);
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      align-self: start;
+      position: sticky;
+      top: 24px;
+    }
+    .composer h3 {
+      margin: 0 0 6px;
+      font-size: 1.45rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    .composer > p {
+      margin: 0 0 24px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+    .field { margin-bottom: 18px; }
+    .field label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #52616D;
+      margin-bottom: 8px;
+    }
+    .field input, .field textarea {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: 1.5px solid #E3E8EC;
+      background: #fff;
+      font: inherit;
+      font-size: 0.95rem;
+      color: var(--ink);
+      transition: border-color .2s, box-shadow .2s;
+      outline: none;
+    }
+    .field input:focus, .field textarea:focus {
+      border-color: rgba(14,124,134,0.45);
+      box-shadow: 0 0 0 4px rgba(14,124,134,0.1);
+    }
+    .field textarea {
+      resize: vertical;
+      min-height: 110px;
+      line-height: 1.5;
+    }
+    .colors {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .color-swatch {
+      width: 34px; height: 34px;
+      border-radius: 10px;
+      border: 3px solid transparent;
+      cursor: pointer;
+      transition: transform .15s, box-shadow .15s;
+      position: relative;
+    }
+    .color-swatch:hover { transform: scale(1.08); }
+    .color-swatch.active {
+      border-color: var(--ink);
+      box-shadow: 0 0 0 3px rgba(31,41,51,0.12);
+    }
+    .composer .btn-primary {
+      width: 100%;
+      margin-top: 6px;
+    }
+    .composer-hint {
+      margin-top: 14px;
+      font-size: 0.78rem;
+      color: #7A8791;
+      line-height: 1.5;
+      text-align: center;
+    }
+
+    .board {
+      position: relative;
+      min-height: 620px;
+      border-radius: 32px;
+      padding: 28px;
+      background:
+        radial-gradient(circle at 20px 20px, rgba(255,255,255,0.35) 2px, transparent 2px),
+        linear-gradient(180deg, #F7E6C8 0%, #EED6AE 100%);
+      background-size: 28px 28px, 100% 100%;
+      box-shadow: inset 0 2px 0 rgba(255,255,255,0.7), 0 24px 60px rgba(120,80,30,0.15);
+      border: 10px solid #D4B07A;
+      overflow: hidden;
+    }
+    .board::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.25), transparent 40%, transparent 70%, rgba(120,80,30,0.05));
+      pointer-events: none;
+    }
+    .board-header {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+      padding-bottom: 18px;
+      border-bottom: 2px dashed rgba(120,80,30,0.2);
+    }
+    .board-title {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #6B4D1F;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .board-count {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #8A6832;
+      background: rgba(255,255,255,0.5);
+      padding: 8px 14px;
+      border-radius: 999px;
+    }
+    .stickers {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 20px;
+      align-content: start;
+      min-height: 480px;
+    }
+    .sticker {
+      position: relative;
+      padding: 22px 20px 18px;
+      border-radius: 4px 4px 18px 4px;
+      box-shadow: 0 8px 20px rgba(60,40,10,0.12), 0 2px 4px rgba(60,40,10,0.06);
+      min-height: 170px;
+      display: flex;
+      flex-direction: column;
+      transition: transform .2s ease, box-shadow .2s ease;
+      animation: popIn .35s cubic-bezier(.2,.9,.3,1.2) both;
+      cursor: grab;
+      user-select: none;
+      touch-action: none;
+    }
+    .sticker:nth-child(odd) { transform: rotate(-1.2deg); }
+    .sticker:nth-child(even) { transform: rotate(1deg); }
+    .sticker:nth-child(3n) { transform: rotate(-0.5deg); }
+    .sticker:hover {
+      transform: rotate(0deg) scale(1.02) !important;
+      box-shadow: 0 14px 30px rgba(60,40,10,0.16);
+      z-index: 5;
+    }
+    .sticker.dragging {
+      cursor: grabbing;
+      z-index: 20;
+      transform: scale(1.04) rotate(2deg) !important;
+      box-shadow: 0 24px 40px rgba(60,40,10,0.22);
+    }
+    @keyframes popIn {
+      from { opacity: 0; transform: scale(0.85) rotate(-4deg); }
+      to { opacity: 1; }
+    }
+    .sticker::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 56px; height: 18px;
+      background: rgba(255,255,255,0.45);
+      border-radius: 0 0 4px 4px;
+      box-shadow: inset 0 -1px 2px rgba(0,0,0,0.04);
+    }
+    .sticker-message {
+      font-family: 'Caveat', cursive;
+      font-size: 1.55rem;
+      line-height: 1.3;
+      color: #2A2A2A;
+      margin: 4px 0 auto;
+      padding-bottom: 16px;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    .sticker-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: auto;
+    }
+    .sticker-author {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: rgba(0,0,0,0.55);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .sticker-delete {
+      width: 28px; height: 28px;
+      border: none;
+      background: rgba(0,0,0,0.06);
+      color: rgba(0,0,0,0.45);
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      line-height: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: .2s;
+      flex-shrink: 0;
+    }
+    .sticker-delete:hover { background: rgba(180,40,40,0.12); color: #B42828; }
+
+    .board-empty {
+      position: absolute;
+      inset: 80px 28px 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #8A6832;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .board-empty .empty-icon { font-size: 3rem; margin-bottom: 12px; opacity: 0.7; }
+    .board-empty p { margin: 0; font-weight: 600; font-size: 1rem; line-height: 1.6; max-width: 28ch; }
+    .board-empty.hidden { display: none; }
+
+    /* FOOTER */
+    footer {
+      padding: 32px 0 48px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.92rem;
+      position: relative;
+      z-index: 1;
+    }
+    footer strong { color: var(--ink); }
+    .footer-hearts { font-size: 1.2rem; margin-bottom: 8px; }
+
+    /* LIGHTBOX */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(20,26,32,0.88);
+      backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      z-index: 1000;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img {
+      max-width: min(100%, 1100px);
+      max-height: calc(100vh - 48px);
+      width: auto;
+      height: auto;
+      border-radius: 16px;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.45);
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 20px; right: 20px;
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+      font-size: 1.8rem;
+      line-height: 1;
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .lightbox-close:hover { background: rgba(255,255,255,0.22); }
+
+    /* CONFETTI CANVAS */
+    #confetti {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1020px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+      .hero-visual { max-width: 680px; width: 100%; margin: 0 auto; padding: 16px; }
+      .hero-card img { height: 480px; }
+      .board-wrap { grid-template-columns: 1fr; }
+      .composer { position: static; }
+      .gallery { grid-auto-rows: 72px; gap: 14px; }
+    }
+    @media (max-width: 720px) {
+      .container { width: min(1180px, calc(100% - 32px)); }
+      .nav { flex-direction: column; align-items: flex-start; margin-bottom: 40px; }
+      .nav-links { justify-content: flex-start; }
+      .hero { padding-top: 32px; }
+      .hero-card { padding: 12px; border-radius: 28px; transform: none; }
+      .hero-card img { height: 380px; border-radius: 20px; }
+      .floating-note.bday { display: none; }
+      .floating-note.beer { left: 0; bottom: 16px; }
+      .floating-note.sport { right: 0; top: 0; }
+      .gallery {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 180px;
+        gap: 12px;
+      }
+      .photo:nth-child(n) { grid-column: span 1; grid-row: span 1; }
+      .photo:nth-child(1), .photo:nth-child(5), .photo:nth-child(18) { grid-column: span 2; grid-row: span 1; grid-auto-rows: 240px; }
+      .photo:nth-child(1) img, .photo:nth-child(5) img, .photo:nth-child(18) img { min-height: 240px; }
+      .board { padding: 20px; min-height: 520px; border-width: 8px; }
+      .stickers { grid-template-columns: 1fr; min-height: 360px; }
+      .board-empty { inset: 72px 20px 20px; }
+    }
+    @media (max-width: 480px) {
+      h1 { font-size: clamp(2.6rem, 14vw, 3.6rem); }
+      .hero p { font-size: 1rem; }
+      .btn { width: 100%; }
+      .hero-actions { flex-direction: column; }
+      .hero-card img { height: 300px; }
+      .gallery { grid-auto-rows: 160px; }
+      .photo:nth-child(1), .photo:nth-child(5), .photo:nth-child(18) { grid-auto-rows: 220px; }
+      .composer { padding: 22px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-shapes" aria-hidden="true">
+    <span class="s1"></span>
+    <span class="s2"></span>
+    <span class="s3"></span>
+  </div>
+  <canvas id="confetti" aria-hidden="true"></canvas>
+
+  <header class="hero">
+    <div class="container">
+      <nav class="nav">
+        <div class="badge"><span class="badge-dot"></span>День рождения Славы</div>
+        <div class="nav-links">
+          <a href="#photos">Фото</a>
+          <a href="#wishes">Поздравления</a>
+        </div>
+      </nav>
+
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">Сегодня твой день</div>
+          <h1>
+            <span class="name">Слава,</span>
+            <span class="sub">с днём рождения!</span>
+          </h1>
+          <p>Желаем ярких побед, крутых подач, точных ударов и самых тёплых моментов рядом с близкими. Пусть каждый день будет таким же драйвовым, как отличный матч, а отдых — таким же приятным, как холодное пиво после игры.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#wishes">Оставить поздравление</a>
+            <a class="btn btn-secondary" href="#photos">Смотреть фото</a>
+          </div>
+          <div class="interest-tags" aria-label="Интересы Славы">
+            <span class="tag"><span class="icon">🏖️🎾</span>Пляжный теннис</span>
+            <span class="tag"><span class="icon">🏐</span>Волейбол</span>
+            <span class="tag"><span class="icon">⚽</span>Футбол</span>
+            <span class="tag"><span class="icon">🍺</span>Хорошее пиво</span>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-card">
+            <img src="IMG_2515.jpeg" alt="Слава" loading="eager">
+          </div>
+          <div class="floating-note sport">🏐 Чемпион настроения</div>
+          <div class="floating-note bday">🎉 Happy B-Day!</div>
+          <div class="floating-note beer">🍺 За тебя!</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="photos">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="section-label">Фотографии</div>
+          <h2>Моменты, которые хочется помнить</h2>
+          <p>Немного классных кадров — для настроения, улыбок и воспоминаний. Нажми на фото, чтобы открыть его поближе.</p>
+        </div>
+      </div>
+
+      <div class="gallery" id="gallery">
+        <figure class="photo"><img src="IMG_4674.JPG" alt="Фото Славы 1" loading="lazy"></figure>
+        <figure class="photo"><img src="IMG_4307.jpeg" alt="Фото Славы 2" loading="lazy"></figure>
+        <figure class="photo"><img src="IMG_2515.jpeg" alt="Фото Славы 3" loading="lazy"></figure>
+        <figure class="photo"><img src="IMG_1763.JPG" alt="Фото Славы 4" loading="lazy"></figure>
+        <figure class="photo"><img src="IMG_1529.JPG" alt="Фото Славы 5" loading="lazy"></figure>
+        <figure class="photo"><img src="IMG_0739.JPG" alt="Фото Славы 6" loading="lazy"></figure>
+        <figure class="photo"><img src="IMG_0498.JPG" alt="Фото Славы 7" loading="lazy"></figure>
+        <figure class="photo"><img src="IMG_0317.JPG" alt="Фото Славы 8" loading="lazy"></figure>
+        <figure class="photo"><img src="IMG_0155.JPG" alt="Фото Славы 9" loading="lazy"></figure>
+        <figure class="photo"><img src="92394.jpg" alt="Фото Славы 10" loading="lazy"></figure>
+        <figure class="photo"><img src="84103.jpg" alt="Фото Славы 11" loading="lazy"></figure>
+        <figure class="photo"><img src="80953.jpg" alt="Фото Славы 12" loading="lazy"></figure>
+        <figure class="photo"><img src="79755.jpg" alt="Фото Славы 13" loading="lazy"></figure>
+        <figure class="photo"><img src="70724.jpg" alt="Фото Славы 14" loading="lazy"></figure>
+        <figure class="photo"><img src="65589.jpg" alt="Фото Славы 15" loading="lazy"></figure>
+        <figure class="photo"><img src="61307.jpg" alt="Фото Славы 16" loading="lazy"></figure>
+        <figure class="photo"><img src="46472.jpg" alt="Фото Славы 17" loading="lazy"></figure>
+        <figure class="photo"><img src="2017-11-24%2009.37.37.JPG" alt="Фото Славы 18" loading="lazy"></figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="wishes" class="wishes-section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="section-label">Доска поздравлений</div>
+          <h2>Оставь Славе тёплый стикер</h2>
+          <p>Напиши поздравление, выбери цвет и прикрепи стикер на доску. Все пожелания сохраняются в этом браузере, чтобы их можно было перечитывать.</p>
+        </div>
+      </div>
+
+      <div class="board-wrap">
+        <aside class="composer" aria-labelledby="composer-title">
+          <h3 id="composer-title">Новое поздравление</h3>
+          <p>Пару слов — и на доске появится новый стикер.</p>
+          <form id="wish-form">
+            <div class="field">
+              <label for="wish-name">От кого</label>
+              <input id="wish-name" name="name" type="text" maxlength="40" placeholder="Например, Антон" autocomplete="name">
+            </div>
+            <div class="field">
+              <label for="wish-text">Поздравление</label>
+              <textarea id="wish-text" name="text" maxlength="220" placeholder="Слава, желаю..." required></textarea>
+            </div>
+            <div class="field">
+              <label>Цвет стикера</label>
+              <div class="colors" id="color-picker" role="radiogroup" aria-label="Цвет стикера">
+                <button type="button" class="color-swatch active" data-color="#FFF3A6" style="background:#FFF3A6" aria-label="Жёлтый" aria-pressed="true"></button>
+                <button type="button" class="color-swatch" data-color="#FFD3C2" style="background:#FFD3C2" aria-label="Персиковый" aria-pressed="false"></button>
+                <button type="button" class="color-swatch" data-color="#CDEBFF" style="background:#CDEBFF" aria-label="Голубой" aria-pressed="false"></button>
+                <button type="button" class="color-swatch" data-color="#D6F5D6" style="background:#D6F5D6" aria-label="Зелёный" aria-pressed="false"></button>
+                <button type="button" class="color-swatch" data-color="#E7D7FF" style="background:#E7D7FF" aria-label="Сиреневый" aria-pressed="false"></button>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Прикрепить стикер</button>
+            <div class="composer-hint">Стикеры можно перетаскивать по доске и удалять.</div>
+          </form>
+        </aside>
+
+        <div class="board" aria-label="Доска со стикерами">
+          <div class="board-header">
+            <div class="board-title">📌 Доска для Славы</div>
+            <div class="board-count" id="board-count">0 стикеров</div>
+          </div>
+          <div class="stickers" id="stickers"></div>
+          <div class="board-empty" id="board-empty">
+            <div class="empty-icon">✍️</div>
+            <p>Пока здесь тихо. Будь первым, кто оставит поздравление!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-hearts">🎾 🏐 ⚽ 🍺</div>
+      <div>Сделано с теплом для <strong>Славы</strong>. Пусть этот год будет лучшим!</div>
+    </div>
+  </footer>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Закрыть">&times;</button>
+    <img id="lightbox-img" src="" alt="Увеличенное фото">
+  </div>
+
+  <script>
+    // ---------- Confetti ----------
+    (function initConfetti() {
+      const canvas = document.getElementById('confetti');
+      const ctx = canvas.getContext('2d');
+      const colors = ['#FF6B35', '#FFB347', '#0E7C86', '#4CAF7D', '#F4A261', '#ffffff', '#FFD166'];
+      let W, H, pieces = [], running = true;
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      function resize() {
+        W = canvas.width = window.innerWidth;
+        H = canvas.height = window.innerHeight;
+      }
+      function rand(min, max) { return Math.random() * (max - min) + min; }
+      function createPiece(fromTop) {
+        return {
+          x: rand(0, W),
+          y: fromTop ? rand(-H * 0.2, -20) : rand(-40, H * 0.3),
+          w: rand(6, 12),
+          h: rand(8, 16),
+          color: colors[Math.floor(Math.random() * colors.length)],
+          rot: rand(0, Math.PI * 2),
+          rotSpeed: rand(-0.08, 0.08),
+          vx: rand(-1.2, 1.2),
+          vy: rand(1.8, 4.2),
+          sway: rand(0, Math.PI * 2),
+          swaySpeed: rand(0.01, 0.03),
+          shape: Math.random() > 0.5 ? 'rect' : 'circle'
+        };
+      }
+      function init() {
+        resize();
+        pieces = [];
+        const count = reduceMotion ? 0 : Math.min(140, Math.floor(W / 10));
+        for (let i = 0; i < count; i++) pieces.push(createPiece(false));
+      }
+      function draw() {
+        if (!running) return;
+        ctx.clearRect(0, 0, W, H);
+        for (const p of pieces) {
+          p.sway += p.swaySpeed;
+          p.x += p.vx + Math.sin(p.sway) * 0.6;
+          p.y += p.vy;
+          p.rot += p.rotSpeed;
+          if (p.y > H + 30) {
+            p.y = -20;
+            p.x = rand(0, W);
+          }
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.rotate(p.rot);
+          ctx.fillStyle = p.color;
+          ctx.globalAlpha = 0.9;
+          if (p.shape === 'rect') ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+          else { ctx.beginPath(); ctx.arc(0, 0, p.w / 2, 0, Math.PI * 2); ctx.fill(); }
+          ctx.restore();
+        }
+        requestAnimationFrame(draw);
+      }
+      window.addEventListener('resize', resize);
+      init();
+      if (!reduceMotion) {
+        draw();
+        setTimeout(() => { running = false; ctx.clearRect(0, 0, W, H); }, 6500);
+      }
+    })();
+
+    // ---------- Lightbox ----------
+    (function initLightbox() {
+      const lightbox = document.getElementById('lightbox');
+      const img = document.getElementById('lightbox-img');
+      const closeBtn = document.getElementById('lightbox-close');
+      document.getElementById('gallery').addEventListener('click', (e) => {
+        const target = e.target.closest('.photo img');
+        if (!target) return;
+        img.src = target.src;
+        img.alt = target.alt || 'Фото';
+        lightbox.classList.add('open');
+        lightbox.setAttribute('aria-hidden', 'false');
+      });
+      function close() {
+        lightbox.classList.remove('open');
+        lightbox.setAttribute('aria-hidden', 'true');
+        img.src = '';
+      }
+      closeBtn.addEventListener('click', close);
+      lightbox.addEventListener('click', (e) => { if (e.target === lightbox) close(); });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+    })();
+
+    // ---------- Sticker Board ----------
+    (function initBoard() {
+      const STORAGE_KEY = 'slava-birthday-wishes-v2';
+      const form = document.getElementById('wish-form');
+      const nameInput = document.getElementById('wish-name');
+      const textInput = document.getElementById('wish-text');
+      const stickersEl = document.getElementById('stickers');
+      const emptyEl = document.getElementById('board-empty');
+      const countEl = document.getElementById('board-count');
+      const colorPicker = document.getElementById('color-picker');
+      let selectedColor = '#FFF3A6';
+
+      const defaultWishes = [
+        { id: uid(), name: 'Друзья', text: 'Слава, с днём рождения! Больше ярких матчей, побед и отличного настроения!', color: '#FFF3A6', x: null, y: null, rot: -1.5 },
+        { id: uid(), name: 'Команда', text: 'Пусть подача всегда будет точной, а пиво после игры — холодным! 🍺', color: '#CDEBFF', x: null, y: null, rot: 1.2 },
+        { id: uid(), name: 'Болельщики', text: 'Здоровья, счастья, драйва и новых крутых моментов на поле и на пляже!', color: '#D6F5D6', x: null, y: null, rot: -0.6 },
+        { id: uid(), name: 'Настя', text: 'Слава, с днем рождения тебя! Самый позитивный микстер и добрейший человек, который при этом способен не хило потроллить всяких токсиков, обладающий выдающимся чувством юмора и недюжинными спортивными способностями, бегающий одинаково быстро и на песке, и на траве, с пеленок не бьющий по аутам, надежный семьянин и друг, в общем прекрасный во всех отношениях мужчина! Пусть жизнь тебя награждает так, как ты заслуживаешь! Пусть колени будут как новенькие, организм вынослив к спорту и к тусовкам, круг друзей широк , кошелек полон, гармония в семье постоянна!', color: '#FFD3C2', x: null, y: null, rot: 0.8 },
+        { id: uid(), name: 'Алексей', text: 'Славян, с Днем Рождения. Меньше тревог и проблем в этом турбулентном мире. Будь счастлив и здоров!', color: '#E7D7FF', x: null, y: null, rot: -1.1 }
+      ];
+
+      function uid() { return 'w_' + Math.random().toString(36).slice(2, 10) + Date.now().toString(36); }
+
+      function load() {
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY);
+          if (!raw) return defaultWishes.slice();
+          const parsed = JSON.parse(raw);
+          if (Array.isArray(parsed)) return parsed;
+        } catch (_) {}
+        return defaultWishes.slice();
+      }
+
+      let wishes = load();
+
+      function save() {
+        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(wishes)); } catch (_) {}
+      }
+
+      function pluralize(n) {
+        const mod10 = n % 10, mod100 = n % 100;
+        if (mod10 === 1 && mod100 !== 11) return n + ' стикер';
+        if (mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14)) return n + ' стикера';
+        return n + ' стикеров';
+      }
+
+      function render() {
+        stickersEl.innerHTML = '';
+        countEl.textContent = pluralize(wishes.length);
+        emptyEl.classList.toggle('hidden', wishes.length > 0);
+        wishes.forEach((w, idx) => {
+          const el = document.createElement('article');
+          el.className = 'sticker';
+          el.style.background = w.color || '#FFF3A6';
+          const rot = typeof w.rot === 'number' ? w.rot : (idx % 2 ? 1 : -1.2);
+          el.style.setProperty('--rot', rot + 'deg');
+          el.style.transform = `rotate(${rot}deg)`;
+          el.dataset.id = w.id;
+          el.innerHTML = `
+            <div class="sticker-message"></div>
+            <div class="sticker-footer">
+              <span class="sticker-author"></span>
+              <button class="sticker-delete" type="button" aria-label="Удалить стикер" title="Удалить">×</button>
+            </div>
+          `;
+          el.querySelector('.sticker-message').textContent = w.text;
+          el.querySelector('.sticker-author').textContent = w.name ? '— ' + w.name : '— Аноним';
+          el.querySelector('.sticker-delete').addEventListener('click', (e) => {
+            e.stopPropagation();
+            wishes = wishes.filter(item => item.id !== w.id);
+            save();
+            render();
+          });
+          makeDraggable(el, w);
+          stickersEl.appendChild(el);
+        });
+      }
+
+      function makeDraggable(el, wish) {
+        let startX, startY, originX, originY, dragging = false;
+        const onDown = (e) => {
+          if (e.target.closest('.sticker-delete')) return;
+          if (e.button !== undefined && e.button !== 0) return;
+          dragging = true;
+          el.classList.add('dragging');
+          el.setPointerCapture && e.pointerId !== undefined && el.setPointerCapture(e.pointerId);
+          const rect = el.getBoundingClientRect();
+          startX = e.clientX;
+          startY = e.clientY;
+          // Use current transform translation if any
+          const m = el.style.transform.match(/translate\(([-\d.]+)px,\s*([-\d.]+)px\)/);
+          originX = m ? parseFloat(m[1]) : 0;
+          originY = m ? parseFloat(m[2]) : 0;
+          el.style.zIndex = 20;
+        };
+        const onMove = (e) => {
+          if (!dragging) return;
+          const dx = e.clientX - startX;
+          const dy = e.clientY - startY;
+          const rot = typeof wish.rot === 'number' ? wish.rot : 0;
+          el.style.transform = `translate(${originX + dx}px, ${originY + dy}px) rotate(${rot}deg) scale(1.04)`;
+        };
+        const onUp = (e) => {
+          if (!dragging) return;
+          dragging = false;
+          el.classList.remove('dragging');
+          const dx = e.clientX - startX;
+          const dy = e.clientY - startY;
+          wish.x = (wish.x || 0) + dx;
+          wish.y = (wish.y || 0) + dy;
+          const rot = typeof wish.rot === 'number' ? wish.rot : 0;
+          el.style.transform = `translate(${wish.x}px, ${wish.y}px) rotate(${rot}deg)`;
+          el.style.zIndex = '';
+          save();
+        };
+        el.addEventListener('pointerdown', onDown);
+        el.addEventListener('pointermove', onMove);
+        el.addEventListener('pointerup', onUp);
+        el.addEventListener('pointercancel', onUp);
+        // apply stored offset
+        if (wish.x || wish.y) {
+          const rot = typeof wish.rot === 'number' ? wish.rot : 0;
+          el.style.transform = `translate(${wish.x || 0}px, ${wish.y || 0}px) rotate(${rot}deg)`;
+        }
+      }
+
+      colorPicker.addEventListener('click', (e) => {
+        const btn = e.target.closest('.color-swatch');
+        if (!btn) return;
+        colorPicker.querySelectorAll('.color-swatch').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); });
+        btn.classList.add('active');
+        btn.setAttribute('aria-pressed', 'true');
+        selectedColor = btn.dataset.color;
+      });
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const text = textInput.value.trim();
+        if (!text) return;
+        const name = nameInput.value.trim().slice(0, 40);
+        const wish = {
+          id: uid(),
+          name,
+          text: text.slice(0, 220),
+          color: selectedColor,
+          x: 0,
+          y: 0,
+          rot: (Math.random() * 3 - 1.5).toFixed(2) * 1
+        };
+        wishes.unshift(wish);
+        save();
+        render();
+        textInput.value = '';
+        textInput.focus();
+      });
+
+      render();
+    })();
+  </script>
+</body>
+</html>
